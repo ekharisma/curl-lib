@@ -81,7 +81,6 @@ class Curl
 {
 
     const VERSION = 'Curl-PHP-' . PHP_VERSION;
-
     /**
      * @var http methods
      */
@@ -221,7 +220,7 @@ class Curl
 
     /**
      * [generateBoundary]
-     * @return boundary
+     * @return string
      */
     private function generateBoundary()
     {
@@ -236,9 +235,9 @@ class Curl
                     $file['basename'] = basename($file['file']);
                 }
                 if (empty($file['mime_type'])) {
-                    $finfo = finfo_open(FILEINFO_MIME_TYPE);
-                    $file['mime_type'] = finfo_file($finfo, $file['file']);
-                    finfo_close($finfo);
+                    $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
+                    $file['mime_type'] = finfo_file($fileInfo, $file['file']);
+                    finfo_close($fileInfo);
                 }
             }
             if (empty($file['mime_type'])) {
@@ -327,7 +326,7 @@ class Curl
     {
         $headers = array();
         foreach ($this->headers as $key => $value) {
-            $headers[] = $key . ': ' . $value;
+            $headers = sprintf('%s:%s', $key, $value);
         }
         curl_setopt($this->request, CURLOPT_HTTPHEADER, $headers);
     }

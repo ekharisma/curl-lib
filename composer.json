@@ -6,11 +6,14 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "ANDHIKA YUANA",
-            "email": "andhikayuana@gmail.com"
+            "name": "Ekky Kharismadhany",
+            "email": "ekharisma@outlook.com"
         }
     ],
-    "require": {},
+    "require": {
+      "ext-fileinfo": "*",
+        "ext-curl": "*"
+    },
     "autoload": {
         "psr-4": {
             "Yuana\\": "src/"
